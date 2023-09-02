@@ -1,0 +1,10 @@
+.vscodev
+# luarocks environment/dependency management
+# Modules are project installed libraries
+lua_modules
+# systen configuration files (lua paths, etc)
+.luarocks
+lua
+luarocks
+# lua files compiled from moonscript
+*.lua
