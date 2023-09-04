@@ -8,3 +8,5 @@ lua
 luarocks
 # lua files compiled from moonscript
 *.lua
+# Used for testing misc moonscript code to validate syntax
+test.moon
