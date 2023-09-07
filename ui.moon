@@ -12,7 +12,7 @@ draw_cell = (x, y) ->
     )
 
 draw_hi = ->
-    THEME.green\render()
+    THEME.green\draw()
     for i = 2, 6
         draw_cell(2, i)
         draw_cell(4, i)

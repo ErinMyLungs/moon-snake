@@ -7,7 +7,7 @@ class Board
         @board_color = board_color
     
     draw: =>
-        @board_color\render()
+        @board_color\draw()
         love.graphics.rectangle(
             "fill",
             @x_position,

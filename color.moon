@@ -12,7 +12,7 @@ class Color
         @a=a
     
 
-    render: =>
+    draw: =>
         love.graphics.setColor(
             @r, @g, @b, @a
         )
