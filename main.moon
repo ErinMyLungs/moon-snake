@@ -1,6 +1,10 @@
 require "color"
 import game_board, score_board from require "board" 
-import Cell, draw_hi from require "ui"
+import Cell from require "ui"
+import Snake from require 'snake'
+
+-- Delcaring snake var before initialized in love.load to give all functions access to var\
+local snake
 
 love.draw = () ->
     score_board\draw()
@@ -15,13 +19,18 @@ love.draw = () ->
     test_food = Cell(8, 6, THEME.orange)
     test_food\draw()
 
-    -- example multi-cell drawing
-    draw_hi()
+    snake\draw()
 
 love.update = (dt) ->
     print(dt)
+
+love.load = ->
+    snake = Snake()
 
 love.keypressed = (key) ->
     switch key
         when "q"
             love.event.quit(0)
+        when "r"
+            -- reload command
+            love.load()
