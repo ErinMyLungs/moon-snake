@@ -1,6 +1,6 @@
 require "color"
 import game_board, score_board from require "board" 
-import draw_cell, draw_hi from require "ui"
+import Cell, draw_hi from require "ui"
 
 love.draw = () ->
     score_board\draw()
@@ -12,8 +12,8 @@ love.draw = () ->
     game_board\draw()
 
     -- example food item render
-    THEME.orange\draw()
-    draw_cell(8, 6)
+    test_food = Cell(8, 6, THEME.orange)
+    test_food\draw()
 
     -- example multi-cell drawing
     draw_hi()
