@@ -5,6 +5,7 @@ A game of snake implemented using [Moonscript](moonscript.org/) and the [Love2d]
 
 * Basic board and cell rendering implemented
 * A theme system created
+* Fleshed out classes a bit more to improve ergonomics.
 
 Current screenshot of game:
 
@@ -13,6 +14,7 @@ Current screenshot of game:
 
 ### TODO:
 - [ ] Create snake class
+  - Partially complete, need to build in rest of functionality
 - [ ] Create food class
 - [ ] Update `score_board` implementation
   * Probably extend `Board` and include `update_score` and `update_difficulty` methods
