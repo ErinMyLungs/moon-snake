@@ -5,9 +5,7 @@ class Snake
         @length = length
         @color = THEME.green
         @alive = true
-        @snake_segments = [Cell(i, 1, color) for i=1,length]
-        
-    
+        @snake_segments = [Cell(i, 1, @color) for i=1,length]
     
     draw: () =>
         for segment in *@snake_segments
