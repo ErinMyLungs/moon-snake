@@ -27,6 +27,12 @@ class Cell
             @height
         )
     
+    translate: (delta_x=0, delta_y=0) =>
+        return @@(@x+delta_x, @y+delta_y, @color)
+    
+    change_color: (color) =>
+        return @@(@x, @y, color)
+
     equal: (cell) =>
         return @x == cell.x and @y == cell.y
     
