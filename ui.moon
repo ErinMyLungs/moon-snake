@@ -29,6 +29,13 @@ class Cell
     
     equal: (cell) =>
         return @x == cell.x and @y == cell.y
+    
+    __eq: (cell) =>
+        return @\equal(cell)
+    
+    __tostring: () =>
+        return "<Cell '#{@color\name!}' (#{@x},#{@y})>"
+
 
 draw_hi = ->
     for i = 2, 6
