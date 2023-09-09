@@ -16,6 +16,14 @@ class Color
         love.graphics.setColor(
             @r, @g, @b, @a
         )
+    
+    name: =>
+        -- Fetches name of variable color is assigned to in theme
+        -- otherwise returns 'Unknown'
+        return COLOR_TO_NAME[@] if COLOR_TO_NAME[@] else "Unknown"
+    
+    __tostring: () =>
+        return "<Color '#{@\name!}'>"
 
 export THEME = {
     -- snake colors
@@ -28,3 +36,7 @@ export THEME = {
     orange: Color(1, .3, .3),
     black: Color()
 }
+
+export COLOR_TO_NAME = { color, name for name,color in pairs THEME}
+
+{:Color}
