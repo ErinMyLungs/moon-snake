@@ -3,7 +3,7 @@ import game_board, score_board from require "board"
 import Cell from require "ui"
 import Snake from require 'snake'
 
--- Delcaring snake var before initialized in love.load to give all functions access to var\
+-- Declaring snake var before initialized in love.load to give all functions access to var\
 local snake
 
 love.draw = () ->
