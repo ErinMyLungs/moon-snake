@@ -10,3 +10,4 @@ luarocks
 *.lua
 # Used for testing misc moonscript code to validate syntax
 test.moon
+.vscode
