@@ -8,6 +8,10 @@ class Snake
         right: 'left'
         up: 'down'
         down: 'up'
+        up_left: "down_right"
+        down_right: "up_left"
+        up_right: "down_left"
+        down_left: "up_right"
     }
 
     new: (length = 3, direction="right") =>
@@ -41,6 +45,18 @@ class Snake
                 delta_y = -1
             when "down"
                 delta_x = 0
+                delta_y = 1
+            when "up_left"
+                delta_x = -1
+                delta_y = -1
+            when "up_right"
+                delta_x = 1
+                delta_y = -1
+            when "down_left"
+                delta_x = -1
+                delta_y = 1
+            when "down_right"
+                delta_x = 1
                 delta_y = 1
         -- pop off tail
         table.remove(@snake_segments, 1)

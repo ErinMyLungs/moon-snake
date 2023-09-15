@@ -34,7 +34,7 @@ love.load = ->
 
 love.keypressed = (key) ->
     switch key
-        when "q"
+        when "k"
             love.event.quit(0)
         when "r"
             -- reload command
@@ -48,4 +48,12 @@ love.keypressed = (key) ->
             snake.input_direction = "right"
         when "w", "up"
             snake.input_direction = "up"
+        when "q"
+            snake.input_direction = "up_left"
+        when "e"
+            snake.input_direction = "up_right"
+        when "z"
+            snake.input_direction = "down_left"
+        when "c"
+            snake.input_direction = "down_right"
         
