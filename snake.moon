@@ -17,6 +17,7 @@ class Snake
         @color = THEME.green
         @alive = true
         @snake_segments = [Cell(i, 1, @color) for i=1,length]
+        @tail = nil
     
     draw: () =>
         for segment in *@snake_segments
@@ -26,6 +27,9 @@ class Snake
         @alive = false
         @color = THEME.snake_grey
         @snake_segments = [cell\change_color(@color) for cell in *@snake_segments]
+    
+    get_head: () =>
+        return @snake_segments[#@snake_segments]
     
     _get_next_position: () =>
         local delta_x, delta_y
@@ -43,10 +47,11 @@ class Snake
                 delta_x = 0
                 delta_y = 1
         -- pop off tail
+        @tail = @snake_segments[1]
         table.remove(@snake_segments, 1)
 
         -- select head cell and translate over in direction of snake
-        last_cell = @snake_segments[#@snake_segments]
+        last_cell = @get_head()
         table.insert(@snake_segments, last_cell\translate(delta_x, delta_y))
     
     update: () =>
@@ -55,7 +60,13 @@ class Snake
         if unacceptable_directions[@snake_direction] ~= @input_direction
             @snake_direction = @input_direction
         @_get_next_position()
-
+    
+    replace_tail: () =>
+        table.insert(@snake_segments, 1, @tail)
+    
+    __tostring: () =>
+        alive_string = "Alive" if @alive else "Dead"
+        return "<Snake (#{alive_string}) Size: #{@length}>"
 
         
 
