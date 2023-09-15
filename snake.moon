@@ -30,6 +30,12 @@ class Snake
         @alive = false
         @color = THEME.snake_grey
         @snake_segments = [cell\change_color(@color) for cell in *@snake_segments]
+
+    _detect_collision: (cell) =>
+        for segment in *@snake_segments
+            if cell == segment
+                return true
+        return false
     
     _get_next_position: () =>
         local delta_x, delta_y
@@ -58,12 +64,21 @@ class Snake
             when "down_right"
                 delta_x = 1
                 delta_y = 1
-        -- pop off tail
-        table.remove(@snake_segments, 1)
 
-        -- select head cell and translate over in direction of snake
         last_cell = @snake_segments[#@snake_segments]
-        table.insert(@snake_segments, last_cell\translate(delta_x, delta_y))
+        next_move = last_cell\translate(delta_x, delta_y)
+        
+        -- pop off tail
+        tail = table.remove(@snake_segments, 1)
+
+        collided_with_self = @_detect_collision(next_move)
+        if collided_with_self
+            table.insert(@snake_segments, 1, tail)
+            @kill!
+            return
+        
+        -- insert new head of snake for animating move
+        table.insert(@snake_segments, next_move)
     
     update: () =>
         if not @alive
