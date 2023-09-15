@@ -2,6 +2,7 @@ require "color"
 import game_board, score_board from require "board" 
 import Cell from require "ui"
 import Snake from require 'snake'
+import Food from require "food"
 
 -- Declaring snake var before initialized in love.load to give all functions access to var\
 local snake, test_food, timer
@@ -26,9 +27,12 @@ love.update = (dt) ->
         snake\update()
         timer = 0
 
+        if test_food\update_and_check_collide() 
+            snake\replace_tail()
+
 love.load = ->
     snake = Snake()
-    test_food = Cell(8, 6, THEME.orange)
+    test_food = Food(snake)
     timer = 0
 
 
@@ -48,4 +52,5 @@ love.keypressed = (key) ->
             snake.input_direction = "right"
         when "w", "up"
             snake.input_direction = "up"
-        
+        when "p"
+            snake\kill!
